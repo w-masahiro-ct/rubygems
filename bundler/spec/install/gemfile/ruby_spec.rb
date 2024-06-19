@@ -83,7 +83,7 @@ RSpec.describe "ruby requirement" do
         rack
 
       RUBY VERSION
-         ruby 2.1.4p422
+         ruby 2.1.4
 
       BUNDLED WITH
          #{Bundler::VERSION}
