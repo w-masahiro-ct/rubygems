@@ -12,7 +12,7 @@ jobs:
   weekly_update:
     name: Rubygems weekly update
     runs-on: ${{ matrix.os }}
-    if: github.repository == 'rubygems/rubygems'
+    if: github.repository == 'ruby/rubygems'
     strategy:
       matrix:
         os: [ubuntu-24.04]

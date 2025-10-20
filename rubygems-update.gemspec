@@ -15,9 +15,9 @@ Gem::Specification.new do |s|
   developers. See our guide on publishing a Gem at guides.rubygems.org"
   s.homepage = "https://guides.rubygems.org"
   s.metadata = {
-    "source_code_uri" => "https://github.com/rubygems/rubygems",
-    "bug_tracker_uri" => "https://github.com/rubygems/rubygems/issues",
-    "changelog_uri" => "https://github.com/rubygems/rubygems/blob/master/CHANGELOG.md",
+    "source_code_uri" => "https://github.com/ruby/rubygems",
+    "bug_tracker_uri" => "https://github.com/ruby/rubygems/issues",
+    "changelog_uri" => "https://github.com/ruby/rubygems/blob/master/CHANGELOG.md",
     "funding_uri" => "https://rubycentral.org/#/portal/signup",
   }
   s.licenses = ["Ruby", "MIT"]
