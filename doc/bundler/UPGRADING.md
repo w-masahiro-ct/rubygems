@@ -137,7 +137,7 @@ Bundler will refuse to run otherwise.
   reference to develop their own plugins. The plugin will contain the same code
   as the old core command, the only difference being that the command is now
   implemented as `bundle graph` which is much easier to understand. However, the
-  details of the plugin are under discussion. See [#3333](https://github.com/rubygems/rubygems/issues/3333).
+  details of the plugin are under discussion. See [#3333](https://github.com/ruby/rubygems/issues/3333).
 
 * The `bundle install` command will no longer accept a `--binstubs` flag.
 

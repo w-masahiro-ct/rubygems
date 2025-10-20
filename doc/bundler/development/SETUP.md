@@ -2,7 +2,7 @@
 
 To work on Bundler, you'll probably want to do a couple of things:
 
-* [Fork the Rubygems repo](https://github.com/rubygems/rubygems), and clone the fork onto your machine. ([Follow this tutorial](https://help.github.com/articles/fork-a-repo/) for instructions on forking a repo.)
+* [Fork the Rubygems repo](https://github.com/ruby/rubygems), and clone the fork onto your machine. ([Follow this tutorial](https://help.github.com/articles/fork-a-repo/) for instructions on forking a repo.)
 
 * Install development dependencies from the rubygems root directory:
 

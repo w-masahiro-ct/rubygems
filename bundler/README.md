@@ -31,7 +31,7 @@ See [bundler.io](https://bundler.io) for the full documentation.
 
 For help with common problems, see [TROUBLESHOOTING](../doc/bundler/TROUBLESHOOTING.md).
 
-Still stuck? Try [filing an issue](https://github.com/rubygems/rubygems/issues/new?labels=Bundler&template=bundler-related-issue.md).
+Still stuck? Try [filing an issue](https://github.com/ruby/rubygems/issues/new?labels=Bundler&template=bundler-related-issue.md).
 
 ## Other questions
 
@@ -41,7 +41,7 @@ To get in touch with the Bundler core team and other Bundler users, please join 
 
 ## Contributing
 
-If you'd like to contribute to Bundler, that's awesome, and we <3 you. We've put together [the Bundler contributor guide](https://github.com/rubygems/rubygems/blob/master/doc/bundler/contributing/README.md) with all of the information you need to get started.
+If you'd like to contribute to Bundler, that's awesome, and we <3 you. We've put together [the Bundler contributor guide](https://github.com/ruby/rubygems/blob/master/doc/bundler/contributing/README.md) with all of the information you need to get started.
 
 If you'd like to request a substantial change to Bundler or its documentation, refer to the [Bundler RFC process](https://github.com/rubygems/rfcs) for more information.
 
@@ -51,8 +51,8 @@ RubyGems is managed by [Ruby Central](https://rubycentral.org), a non-profit org
 
 ## Code of Conduct
 
-Everyone interacting in the Bundler project's codebases, issue trackers, chat rooms, and mailing lists is expected to follow the [Bundler code of conduct](https://github.com/rubygems/rubygems/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Bundler project's codebases, issue trackers, chat rooms, and mailing lists is expected to follow the [Bundler code of conduct](https://github.com/ruby/rubygems/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
-Bundler is available under an [MIT License](https://github.com/rubygems/rubygems/blob/master/bundler/LICENSE.md).
+Bundler is available under an [MIT License](https://github.com/ruby/rubygems/blob/master/bundler/LICENSE.md).

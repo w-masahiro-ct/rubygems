@@ -21,7 +21,7 @@ contributors to follow to reduce the time it takes to get changes merged in.
 
 5.  If you have any questions, Feel free to join us on Slack, you can register
     by signing up at http://slack.bundler.io or file an issue here:
-    http://github.com/rubygems/rubygems/issues
+    http://github.com/ruby/rubygems/issues
 
 
 For more information and ideas on how to contribute to RubyGems ecosystem, see

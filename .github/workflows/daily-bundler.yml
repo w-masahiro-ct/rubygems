@@ -16,7 +16,7 @@ jobs:
   daily_bundler:
     name: Bundler (ruby-head)
     runs-on: ubuntu-24.04
-    if: github.repository == 'rubygems/rubygems'
+    if: github.repository == 'ruby/rubygems'
     env:
       RGV: ..
     steps:
@@ -42,7 +42,7 @@ jobs:
           bin/rake spec:all
       - name: Get previous status
         if: always()
-        run: echo "OLD_STATUS=$(curl -sS 'https://api.github.com/repos/rubygems/rubygems/actions/workflows/daily-bundler.yml/runs?event=schedule&branch=master' | jq '.workflow_runs | .[1].conclusion')" >> $GITHUB_ENV
+        run: echo "OLD_STATUS=$(curl -sS 'https://api.github.com/repos/ruby/rubygems/actions/workflows/daily-bundler.yml/runs?event=schedule&branch=master' | jq '.workflow_runs | .[1].conclusion')" >> $GITHUB_ENV
 
       - uses: 8398a7/action-slack@77eaa4f1c608a7d68b38af4e3f739dcd8cba273e # v3.19.0
         with:
