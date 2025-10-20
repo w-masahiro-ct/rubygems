@@ -41,9 +41,9 @@ class Release
       tag = "#{@tag_prefix}#{@version}"
 
       gh_client.create_release "ruby/rubygems", tag, name: tag,
-                                                         body: @changelog.release_notes.join("\n").strip,
-                                                         prerelease: @version.prerelease?,
-                                                         target_commitish: @stable_branch
+                                                     body: @changelog.release_notes.join("\n").strip,
+                                                     prerelease: @version.prerelease?,
+                                                     target_commitish: @stable_branch
     end
 
     def previous_version
