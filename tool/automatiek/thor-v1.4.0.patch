@@ -1,3 +1,16 @@
+diff --git a/bundler/lib/bundler/vendor/thor/lib/thor/runner.rb b/bundler/lib/bundler/vendor/thor/lib/thor/runner.rb
+index 95f8b16e31..f0ce6df96c 100644
+--- a/bundler/lib/bundler/vendor/thor/lib/thor/runner.rb
++++ b/bundler/lib/bundler/vendor/thor/lib/thor/runner.rb
+@@ -2,7 +2,7 @@
+ require_relative "group"
+
+ require "digest/sha2"
+-require "pathname"
++require "pathname" unless defined?(Pathname)
+
+ class Bundler::Thor::Runner < Bundler::Thor #:nodoc:
+   map "-T" => :list, "-i" => :install, "-u" => :update, "-v" => :version
 diff --git a/bundler/lib/bundler/vendor/thor/lib/thor/shell/color.rb b/bundler/lib/bundler/vendor/thor/lib/thor/shell/color.rb
 index 6a9176331..5d708fadc 100644
 --- a/bundler/lib/bundler/vendor/thor/lib/thor/shell/color.rb
