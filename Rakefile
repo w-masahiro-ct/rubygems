@@ -19,7 +19,7 @@ end
 
 desc "Update Rubygems dev environment"
 task :update do
-  Spec::Rubygems.dev_bundle "update"
+  Spec::Rubygems.dev_bundle "update", "--all"
   Dir.glob("tool/bundler/*_gems.rb").each do |file|
     name = File.basename(file, ".rb")
     next if name == "dev_gems"
