@@ -7,7 +7,6 @@
 # See LICENSE.txt for permissions.
 #++
 
-require_relative "deprecate"
 require_relative "basic_specification"
 require_relative "stub_specification"
 require_relative "platform"
@@ -38,8 +37,6 @@ require "rbconfig"
 # items you may add to a specification.
 
 class Gem::Specification < Gem::BasicSpecification
-  extend Gem::Deprecate
-
   # REFACTOR: Consider breaking out this version stuff into a separate
   # module. There's enough special stuff around it that it may justify
   # a separate class.
@@ -734,14 +731,6 @@ class Gem::Specification < Gem::BasicSpecification
   # Deprecated: It is neither supported nor functional.
 
   attr_accessor :autorequire # :nodoc:
-
-  ##
-  # Sets the default executable for this gem.
-  #
-  # Deprecated: You must now specify the executable name to  Gem.bin_path.
-
-  attr_writer :default_executable
-  rubygems_deprecate :default_executable=
 
   ##
   # Allows deinstallation of gems with legacy platforms.
@@ -1715,24 +1704,6 @@ class Gem::Specification < Gem::BasicSpecification
   end
 
   ##
-  # The default executable for this gem.
-  #
-  # Deprecated: The name of the gem is assumed to be the name of the
-  # executable now.  See Gem.bin_path.
-
-  def default_executable # :nodoc:
-    if defined?(@default_executable) && @default_executable
-      result = @default_executable
-    elsif @executables && @executables.size == 1
-      result = Array(@executables).first
-    else
-      result = nil
-    end
-    result
-  end
-  rubygems_deprecate :default_executable
-
-  ##
   # The default value for specification attribute +name+
 
   def default_value(name)
@@ -2429,7 +2400,6 @@ class Gem::Specification < Gem::BasicSpecification
       :specification_version,
       :version,
       :has_rdoc,
-      :default_executable,
       :metadata,
       :signing_key,
     ]
@@ -2566,21 +2536,6 @@ class Gem::Specification < Gem::BasicSpecification
   def validate_for_resolution
     Gem::SpecificationPolicy.new(self).validate_for_resolution
   end
-
-  def validate_metadata
-    Gem::SpecificationPolicy.new(self).validate_metadata
-  end
-  rubygems_deprecate :validate_metadata
-
-  def validate_dependencies
-    Gem::SpecificationPolicy.new(self).validate_dependencies
-  end
-  rubygems_deprecate :validate_dependencies
-
-  def validate_permissions
-    Gem::SpecificationPolicy.new(self).validate_permissions
-  end
-  rubygems_deprecate :validate_permissions
 
   ##
   # Set the version to +version+.
