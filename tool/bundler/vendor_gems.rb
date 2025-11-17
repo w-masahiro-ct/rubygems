@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gem "fileutils", "1.7.3"
 gem "molinillo", github: "cocoapods/molinillo"
-gem "net-http", github: "ruby/net-http", ref: "d8fd39c589279b1aaec85a7c8de9b3e199c72efe"
+gem "net-http", "0.8.0"
 gem "net-http-persistent", "4.0.6"
 gem "net-protocol", "0.2.2"
 gem "optparse", "0.6.0"
