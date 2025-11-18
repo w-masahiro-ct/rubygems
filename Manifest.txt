@@ -190,7 +190,6 @@ bundler/lib/bundler/settings.rb
 bundler/lib/bundler/settings/validator.rb
 bundler/lib/bundler/setup.rb
 bundler/lib/bundler/shared_helpers.rb
-bundler/lib/bundler/similarity_detector.rb
 bundler/lib/bundler/source.rb
 bundler/lib/bundler/source/gemspec.rb
 bundler/lib/bundler/source/git.rb
