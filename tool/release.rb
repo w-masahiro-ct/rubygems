@@ -160,7 +160,7 @@ class Release
     @previous_stable_branch = @level == :minor_or_major ? "#{segments[0]}.#{segments[1] - 1}" : @stable_branch
     @previous_stable_branch = "3.7" if @stable_branch == "4.0"
 
-    @previous_release_tag = if @level == :minor_or_major
+    @previous_release_tag = if @level == :minor_or_major && segments.size < 4
       "v#{@previous_stable_branch}.0"
     else
       `git describe --tags --abbrev=0`.strip
