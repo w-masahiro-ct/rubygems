@@ -14,7 +14,7 @@
 ### Enhancements:
 
   - Fixup GH-9085 [#9108](https://github.com/ruby/rubygems/pull/9108)
-  - Add go_gem/rake_task for Go native extention gem skeleton [#9105](https://github.com/ruby/rubygems/pull/9105)
+  - Add go_gem/rake_task for Go native extension gem skeleton [#9105](https://github.com/ruby/rubygems/pull/9105)
   - Keep legacy windows platform, not removed them [#9104](https://github.com/ruby/rubygems/pull/9104)
 
 ### Bug fixes:
