@@ -181,6 +181,7 @@ task :generate_changelog, [:version] => [:install_release_dependencies] do |_t, 
   require_relative "tool/release"
 
   Release.for_rubygems(opts[:version]).cut_changelog!
+  Rake::Task["bundler:generate_changelog"].invoke(opts[:version])
 end
 
 desc "Release rubygems-#{v}"
