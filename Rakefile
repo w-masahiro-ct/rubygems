@@ -397,6 +397,7 @@ To update to the latest RubyGems you can run:
 To update to the latest Bundler you can run:
 
     gem install bundler [--pre]
+    bundle update --bundler=#{v}
 
 ## RubyGems Release Notes
 
