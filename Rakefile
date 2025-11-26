@@ -181,6 +181,7 @@ task :generate_changelog, [:version] => [:install_release_dependencies] do |_t, 
   require_relative "tool/release"
 
   Release.for_rubygems(opts[:version]).cut_changelog!
+  Rake::Task["bundler:generate_changelog"].invoke(opts[:version])
 end
 
 desc "Release rubygems-#{v}"
@@ -397,6 +398,7 @@ To update to the latest RubyGems you can run:
 To update to the latest Bundler you can run:
 
     gem install bundler [--pre]
+    bundle update --bundler=#{v}
 
 ## RubyGems Release Notes
 

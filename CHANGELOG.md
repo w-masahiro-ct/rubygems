@@ -1,5 +1,23 @@
 # Changelog
 
+## 4.0.0.beta2 / 2025-11-26
+
+### Deprecations:
+
+* Deprecate comparing Gem::Version objects with strings. Pull request
+  [#9085](https://github.com/ruby/rubygems/pull/9085) by tenderlove
+
+### Enhancements:
+
+* Undeprecate Gem::Version#<=> against strings. Pull request
+  [#9110](https://github.com/ruby/rubygems/pull/9110) by byroot
+* Installs bundler 4.0.0.beta2 as a default gem.
+
+### Bug fixes:
+
+* Respect `BUNDLE_VERSION` config at Gem::BundlerVersionFinder. Pull
+  request [#9106](https://github.com/ruby/rubygems/pull/9106) by hsbt
+
 ## 4.0.0.beta1 / 2025-11-20
 
 ### Security:

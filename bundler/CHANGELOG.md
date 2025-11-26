@@ -1,5 +1,26 @@
 # Changelog
 
+## 4.0.0.beta2 (2025-11-26)
+
+### Features:
+
+  - Support bundle install --lockfile option [#9111](https://github.com/ruby/rubygems/pull/9111)
+  - Add support for lockfile in Gemfile and bundle install --no-lock [#9059](https://github.com/ruby/rubygems/pull/9059)
+
+### Performance:
+
+  - Run git operations in parallel to speed things up: [#9100](https://github.com/ruby/rubygems/pull/9100)
+
+### Enhancements:
+
+  - Fixup GH-9085 [#9108](https://github.com/ruby/rubygems/pull/9108)
+  - Add go_gem/rake_task for Go native extension gem skeleton [#9105](https://github.com/ruby/rubygems/pull/9105)
+  - Keep legacy windows platform, not removed them [#9104](https://github.com/ruby/rubygems/pull/9104)
+
+### Bug fixes:
+
+  - Check for file existence before deletion from cache [#9095](https://github.com/ruby/rubygems/pull/9095)
+
 ## 4.0.0.beta1 (2025-11-20)
 
 ### Security:
