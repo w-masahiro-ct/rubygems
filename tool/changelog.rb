@@ -77,13 +77,7 @@ class Changelog
   end
 
   def release_notes_for_blog
-    release_notes.map do |line|
-      if change_types.include?(line)
-        "_#{line}_"
-      else
-        line
-      end
-    end
+    release_notes
   end
 
   def change_types_for_blog
