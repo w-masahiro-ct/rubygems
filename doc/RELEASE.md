@@ -2,19 +2,19 @@
 
 ## Release guidelines
 
-**tl;dr**: Majors about once per year, minors for any finished features with docs, patches for any committed bugfix.
+**tl;dr**: Majors about once per three or four years, minor releases about once per year, and both types require all features to be complete and fully documented, patches for any committed bugfix.
 
 Patch (bugfix) releases should generally be cut as soon as possible. A patch release for a single bugfix PR is totally okay.
 
 Minor (feature) releases can be cut anytime at least one new feature is ready, but don't have to be. Minor version releases must update their major version's man pages and docs website as needed, and should each have their own "What's new?" section.
 
-Major (breaking) version releases should be cut no more than once per year, and must include a new section of the docs website dedicated to that major version. Ideally, major releases will happen after a Ruby version loses support in February or March, to help us stay in sync with Ruby versions supported by the core team.
+Major (breaking) version releases should be cut no more than once per three or four years, and must include a new section of the docs website dedicated to that major version. Ideally, major releases will happen after a Ruby version loses support in February or March, to help us stay in sync with Ruby versions supported by the Ruby core team.
 
 Breaking changes other than dropping support for old Ruby versions should be avoided whenever possible, but may be included in major releases. In general, breaking changes should include at least one major version (and one year elapsed) with a deprecation warning before the breaking change takes effect.
 
 ### User experience guidelines
 
-The experience of using Bundler should not include surprises. If users are surprised, we did something wrong, and we should fix it. There are no user errors, only UX design failures. Warnings should always include actionable instructions to resolve them. Errors should include instructions, helpful references, or other information to help users attempt to debug.
+The experience of using RubyGems and Bundler should not include surprises. If users are surprised, we did something wrong, and we should fix it. There are no user errors, only UX design failures. Warnings should always include actionable instructions to resolve them. Errors should include instructions, helpful references, or other information to help users attempt to debug.
 
 Changing existing behavior is also surprising. If reducing user surprise will result in a backwards-incompatible change, that change should include at least one major version of deprecation warning before the breaking change is made.
 
@@ -22,9 +22,9 @@ Changing existing behavior is also surprising. If reducing user surprise will re
 
 ### Permissions
 
-You'll need the following environment variables set to release RubyGems & Bundler:
+You'll need the following environment variables set to release RubyGems and Bundler:
 
-* AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY: to be able to push RubyGems zip files to s3 so that they appear at RubyGems [download page].
+* AWS_PROFILE: to be able to push RubyGems zip files to s3 so that they appear at RubyGems [download page]. This profile is provided by AWS SSO credentials that is managed by Ruby Central.
 
 * GITHUB_RELEASE_PAT: A [GitHub PAT] with repo permissions, in order to push GitHub releases and to use the GitHub API for changelog generation.
 
@@ -33,7 +33,7 @@ You'll need the following environment variables set to release RubyGems & Bundle
 
 ### Recommendations for security releases
 
-*   Obtain CVE numbers as needed from HackerOne or Red Hat.
+*   Obtain CVE numbers as needed from HackerOne or GitHub.
 *   Agree on a release date with ruby-core, so patches can be backported to older Ruby versions as needed.
 *   Avoid releasing security updates on Fridays, so platform services don't have to work on weekends.
 *   Continue with the regular release process below.
@@ -92,10 +92,25 @@ We only release major breaking changes when incrementing the _major_ version of 
 
 ### Steps for minor and major releases
 
+#### Preparation
+
 *   Confirm all PRs that you want listed in changelogs are properly tagged with `rubygems: <type>` or `bundler: <type>` labels at GitHub.
-*   Run `bin/rake prepare_release[<target_rubygems_version>]`. This will create a new stable branch off the master branch, and create a PR to it with the proper version bumps and changelogs. It will also create a PR to merge release changelogs into master.
-*   Replace the stable branch in the workflows with the new stable branch, and push that change to the release PR.
-*   Replace version numbers with the next ".dev" version, and push that change to the master PR.
-*   Once CI passes, merge the release PR, switch to  the stable branch and pull the PR just merged.
-*   Release `bundler` with `bin/rake bundler:release`.
+*   Confirm to set `AWS_PROFILE` and `GITHUB_RELEASE_PAT` environment variables.
+
+#### Release
+
+*   Create the release branch like `4-0-0` or `4-0-0-beta1`.
+*   Bump up version number at `lib/rubygems.rb` and `bundler/lib/bundler/version.rb`.
+*   Run `rake generate_changelog[4.0.0.beta1]` and `rake version:update_locked_bundler`.
+*   Run `DRYRUN=1 rake release` to verify that everything is working as expected.
+*   Push the release branch and open a PR to the stable branch. And confirm to CI passes.
+*   Tag the release commit with the proper version tag, e.g. `v4.0.0.beta1`.
+*   Push the tag to GitHub.
 *   Release `rubygems` with `bin/rake release`.
+*   Release `bundler` with `bin/rake bundler:release`.
+
+#### Post-release
+
+*   Replace version numbers with the next ".dev" version.
+*   Run `rake version:update_locked_bundler`, and push that change to the master PR.
+*   Once CI passes, merge the release PR, switch to  the stable branch and pull the PR just merged.
