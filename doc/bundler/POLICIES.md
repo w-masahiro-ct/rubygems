@@ -59,24 +59,6 @@ As of May, 2024, that means Bundler 2.5 is the only supported version, but the B
 
 These policies are not a guarantee that any particular fix will be backported. Instead, this is a way for us to set an upper limit on the versions of Ruby, RubyGems, and Bundler that we have to consider while making changes. Without the limit, the number of versions grows exponentially over time and quickly becomes overwhelming, which leads to maintainer burnout. We want to avoid that.
 
-## Release guidelines
-
-**tl;dr**: Majors about once per year, minors for any finished features with docs, patches for any committed bugfix.
-
-Patch (bugfix) releases should generally be cut as soon as possible. A patch release for a single bugfix PR is totally okay.
-
-Minor (feature) releases can be cut anytime at least one new feature is ready, but don't have to be. Minor version releases must update their major version's man pages and docs website as needed, and should each have their own "What's new?" section.
-
-Major (breaking) version releases should be cut no more than once per year, and must include a new section of the docs website dedicated to that major version. Ideally, major releases will happen after a Ruby version loses support in February or March, to help us stay in sync with Ruby versions supported by the core team.
-
-Breaking changes other than dropping support for old Ruby versions should be avoided whenever possible, but may be included in major releases. In general, breaking changes should include at least one major version (and one year elapsed) with a deprecation warning before the breaking change takes effect.
-
-### User experience guidelines
-
-The experience of using Bundler should not include surprises. If users are surprised, we did something wrong, and we should fix it. There are no user errors, only UX design failures. Warnings should always include actionable instructions to resolve them. Errors should include instructions, helpful references, or other information to help users attempt to debug.
-
-Changing existing behavior is also surprising. If reducing user surprise will result in a backwards-incompatible change, that change should include at least one major version of deprecation warning before the breaking change is made.
-
 ## Issue guidelines
 
 Anyone is welcome to open an issue, or comment on an issue. Issue comments without useful content (like “me too”) may be removed.
