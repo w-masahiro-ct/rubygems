@@ -156,7 +156,7 @@ class Release
     bundler_version = segments.join(".").gsub(/([a-z])\.(\d)/i, '\1\2')
     @bundler = Bundler.new(bundler_version, @stable_branch)
 
-    @release_branch = "release/bundler_#{bundler_version}_rubygems_#{rubygems_version}"
+    @release_branch = "release/#{version}"
   end
 
   def set_bundler_as_current_library
