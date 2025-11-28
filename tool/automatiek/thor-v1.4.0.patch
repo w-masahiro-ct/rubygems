@@ -1,3 +1,17 @@
+diff --git a/bundler/lib/bundler/vendor/thor/lib/thor.rb b/bundler/lib/bundler/vendor/thor/lib/thor.rb
+index bfd9f5c914..945bdbd551 100644
+--- a/bundler/lib/bundler/vendor/thor/lib/thor.rb
++++ b/bundler/lib/bundler/vendor/thor/lib/thor.rb
+@@ -625,7 +625,7 @@ def normalize_command_name(meth) #:nodoc:
+     # alias name.
+     def find_command_possibilities(meth)
+       len = meth.to_s.length
+-      possibilities = all_commands.merge(map).keys.select { |n| meth == n[0, len] }.sort
++      possibilities = all_commands.reject { |_k, c| c.hidden? }.merge(map).keys.select { |n| meth == n[0, len] }.sort
+       unique_possibilities = possibilities.map { |k| map[k] || k }.uniq
+
+       if possibilities.include?(meth)
+
 diff --git a/bundler/lib/bundler/vendor/thor/lib/thor/runner.rb b/bundler/lib/bundler/vendor/thor/lib/thor/runner.rb
 index 95f8b16e31..f0ce6df96c 100644
 --- a/bundler/lib/bundler/vendor/thor/lib/thor/runner.rb
