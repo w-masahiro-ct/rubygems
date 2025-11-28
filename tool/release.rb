@@ -131,7 +131,7 @@ class Release
 
   def self.for_bundler(version)
     segments = Gem::Version.new(version).segments
-    rubygems_version = if segments[0] >= 4
+    rubygems_version = if @prerelease
       segments.join(".")
     else
       segments.map.with_index {|s, i| i == 0 ? s + 1 : s }.join(".")
@@ -155,12 +155,13 @@ class Release
     segments = Gem::Version.new(version).segments
 
     @level = segments[2] != 0 ? :patch : :minor_or_major
+    @prerelease = segments.size > 3
 
     @stable_branch = segments[0, 2].join(".")
     @previous_stable_branch = @level == :minor_or_major ? "#{segments[0]}.#{segments[1] - 1}" : @stable_branch
     @previous_stable_branch = "3.7" if @stable_branch == "4.0"
 
-    @previous_release_tag = if @level == :minor_or_major && segments.size < 4
+    @previous_release_tag = if @level == :minor_or_major && !@prerelease
       "v#{@previous_stable_branch}.0"
     else
       `git describe --tags --abbrev=0`.strip
@@ -169,7 +170,7 @@ class Release
     rubygems_version = segments.join(".").gsub(/([a-z])\.(\d)/i, '\1\2')
     @rubygems = Rubygems.new(rubygems_version, @stable_branch)
 
-    bundler_version = if segments[0] >= 4
+    bundler_version = if @prerelease
       segments.join(".")
     else
       segments.map.with_index {|s, i| i == 0 ? s - 1 : s }.join(".")
