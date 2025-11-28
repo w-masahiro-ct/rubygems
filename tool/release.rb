@@ -170,11 +170,17 @@ class Release
   def prepare!
     initial_branch = `git rev-parse --abbrev-ref HEAD`.strip
 
-    create_if_not_exist_and_switch_to(@stable_branch, from: "master")
+    unless @prerelease
+      create_if_not_exist_and_switch_to(@stable_branch, from: "master")
+      # system("git", "push", "origin", @stable_branch, exception: true) if @level == :minor_or_major
+    end
 
-    # system("git", "push", "origin", @stable_branch, exception: true) if @level == :minor_or_major
-
-    create_if_not_exist_and_switch_to(@release_branch, from: @stable_branch)
+    from_branch = if @level == :minor_or_major && @prerelease
+      "master"
+    else
+      @stable_branch
+    end
+    create_if_not_exist_and_switch_to(@release_branch, from: from_branch)
 
     begin
       @bundler.set_relevant_pull_requests_from(unreleased_pull_requests)
@@ -194,21 +200,23 @@ class Release
       #   "It's release day!"
       # )
 
-      create_if_not_exist_and_switch_to("cherry_pick_changelogs", from: "master")
+      unless @prerelease
+        create_if_not_exist_and_switch_to("cherry_pick_changelogs", from: "master")
 
-      begin
-        system("git", "cherry-pick", bundler_changelog, rubygems_changelog, exception: true)
-        # system("git", "push", exception: true)
-      rescue StandardError
-        system("git", "cherry-pick", "--abort")
-      else
-        # gh_client.create_pull_request(
-        #   "ruby/rubygems",
-        #   "master",
-        #   "cherry_pick_changelogs",
-        #   "Changelogs for RubyGems #{@rubygems.version} and Bundler #{@bundler.version}",
-        #   "Cherry-picking change logs from future RubyGems #{@rubygems.version} and Bundler #{@bundler.version} into master."
-        # )
+        begin
+          system("git", "cherry-pick", bundler_changelog, rubygems_changelog, exception: true)
+          # system("git", "push", exception: true)
+        rescue StandardError
+          system("git", "cherry-pick", "--abort")
+        else
+          # gh_client.create_pull_request(
+          #   "ruby/rubygems",
+          #   "master",
+          #   "cherry_pick_changelogs",
+          #   "Changelogs for RubyGems #{@rubygems.version} and Bundler #{@bundler.version}",
+          #   "Cherry-picking change logs from future RubyGems #{@rubygems.version} and Bundler #{@bundler.version} into master."
+          # )
+        end
       end
     rescue StandardError, LoadError
       system("git", "checkout", initial_branch)
