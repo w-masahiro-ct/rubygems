@@ -172,7 +172,7 @@ class Release
 
     unless @prerelease
       create_if_not_exist_and_switch_to(@stable_branch, from: "master")
-      # system("git", "push", "origin", @stable_branch, exception: true) if @level == :minor_or_major
+      system("git", "push", "origin", @stable_branch, exception: true) if @level == :minor_or_major
     end
 
     from_branch = if @level == :minor_or_major && @prerelease
@@ -190,32 +190,32 @@ class Release
 
       bundler_changelog, rubygems_changelog = cut_changelogs_and_bump_versions
 
-      # system("git", "push", exception: true)
+      system("git", "push", exception: true)
 
-      # gh_client.create_pull_request(
-      #   "ruby/rubygems",
-      #   @stable_branch,
-      #   @release_branch,
-      #   "Prepare RubyGems #{@rubygems.version} and Bundler #{@bundler.version}",
-      #   "It's release day!"
-      # )
+      gh_client.create_pull_request(
+        "ruby/rubygems",
+        from_branch,
+        @release_branch,
+        "Prepare RubyGems #{@rubygems.version} and Bundler #{@bundler.version}",
+        "It's release day!"
+      )
 
       unless @prerelease
         create_if_not_exist_and_switch_to("cherry_pick_changelogs", from: "master")
 
         begin
           system("git", "cherry-pick", bundler_changelog, rubygems_changelog, exception: true)
-          # system("git", "push", exception: true)
+          system("git", "push", exception: true)
         rescue StandardError
           system("git", "cherry-pick", "--abort")
         else
-          # gh_client.create_pull_request(
-          #   "ruby/rubygems",
-          #   "master",
-          #   "cherry_pick_changelogs",
-          #   "Changelogs for RubyGems #{@rubygems.version} and Bundler #{@bundler.version}",
-          #   "Cherry-picking change logs from future RubyGems #{@rubygems.version} and Bundler #{@bundler.version} into master."
-          # )
+          gh_client.create_pull_request(
+            "ruby/rubygems",
+            "master",
+            "cherry_pick_changelogs",
+            "Changelogs for RubyGems #{@rubygems.version} and Bundler #{@bundler.version}",
+            "Cherry-picking change logs from future RubyGems #{@rubygems.version} and Bundler #{@bundler.version} into master."
+          )
         end
       end
     rescue StandardError, LoadError
