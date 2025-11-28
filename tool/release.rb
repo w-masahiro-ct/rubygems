@@ -172,7 +172,7 @@ class Release
 
     unless @prerelease
       create_if_not_exist_and_switch_to(@stable_branch, from: "master")
-      system("git", "push", "origin", @stable_branch, exception: true) if @level == :minor_or_major
+      system("git", "push", "origin", @stable_branch, exception: true) if @level == :minor_or_major && !ENV["DRYRUN"]
     end
 
     from_branch = if @level == :minor_or_major && @prerelease
@@ -190,7 +190,7 @@ class Release
 
       bundler_changelog, rubygems_changelog = cut_changelogs_and_bump_versions
 
-      system("git", "push", exception: true)
+      system("git", "push", exception: true) unless ENV["DRYRUN"]
 
       gh_client.create_pull_request(
         "ruby/rubygems",
@@ -198,14 +198,14 @@ class Release
         @release_branch,
         "Prepare RubyGems #{@rubygems.version} and Bundler #{@bundler.version}",
         "It's release day!"
-      )
+      ) unless ENV["DRYRUN"]
 
       unless @prerelease
         create_if_not_exist_and_switch_to("cherry_pick_changelogs", from: "master")
 
         begin
           system("git", "cherry-pick", bundler_changelog, rubygems_changelog, exception: true)
-          system("git", "push", exception: true)
+          system("git", "push", exception: true) unless ENV["DRYRUN"]
         rescue StandardError
           system("git", "cherry-pick", "--abort")
         else
@@ -215,7 +215,7 @@ class Release
             "cherry_pick_changelogs",
             "Changelogs for RubyGems #{@rubygems.version} and Bundler #{@bundler.version}",
             "Cherry-picking change logs from future RubyGems #{@rubygems.version} and Bundler #{@bundler.version} into master."
-          )
+          ) unless ENV["DRYRUN"]
         end
       end
     rescue StandardError, LoadError
