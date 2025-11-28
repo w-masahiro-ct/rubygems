@@ -187,6 +187,11 @@ end
 desc "Release rubygems-#{v}"
 task release: :prerelease do
   Rake::Task["package"].invoke
+  puts "Tagging v#{v}"
+  sh "git", "tag", "v#{v}", noop: ENV["DRYRUN"]
+  puts "Pushing v#{v} to origin"
+  sh "git", "push", "origin", "v#{v}", noop: ENV["DRYRUN"]
+  puts "Pushing rubygems-update-#{v} to RubyGems.org"
   sh "gem", "push", "pkg/rubygems-update-#{v}.gem", noop: ENV["DRYRUN"]
   Rake::Task["postrelease"].invoke
 end
