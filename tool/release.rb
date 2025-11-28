@@ -101,17 +101,7 @@ class Release
     end
 
     def extra_entry
-      "Installs bundler #{bundler_version} as a default gem"
-    end
-
-    private
-
-    def bundler_version
-      if version.segments[0] >= 4
-        version.to_s.gsub(/([a-z])\.(\d)/i, '\1\2')
-      else
-        version.segments.map.with_index {|s, i| i == 0 ? s - 1 : s }.join(".")
-      end
+      "Installs bundler #{@version} as a default gem"
     end
   end
 
@@ -130,14 +120,7 @@ class Release
   end
 
   def self.for_bundler(version)
-    segments = Gem::Version.new(version).segments
-    rubygems_version = if @prerelease
-      segments.join(".")
-    else
-      segments.map.with_index {|s, i| i == 0 ? s + 1 : s }.join(".")
-    end
-
-    release = new(rubygems_version)
+    release = new(version)
     release.set_bundler_as_current_library
     release
   end
@@ -170,13 +153,7 @@ class Release
     rubygems_version = segments.join(".").gsub(/([a-z])\.(\d)/i, '\1\2')
     @rubygems = Rubygems.new(rubygems_version, @stable_branch)
 
-    bundler_version = if @prerelease
-      segments.join(".")
-    else
-      segments.map.with_index {|s, i| i == 0 ? s - 1 : s }.join(".")
-    end
-    bundler_version = bundler_version.gsub(/([a-z])\.(\d)/i, '\1\2')
-
+    bundler_version = segments.join(".").gsub(/([a-z])\.(\d)/i, '\1\2')
     @bundler = Bundler.new(bundler_version, @stable_branch)
 
     @release_branch = "release/bundler_#{bundler_version}_rubygems_#{rubygems_version}"
