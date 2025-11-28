@@ -99,15 +99,23 @@ We only release major breaking changes when incrementing the _major_ version of 
 
 #### Release
 
-*   Create the release branch like `4-0-0` or `4-0-0-beta1`.
-*   Bump up version number at `lib/rubygems.rb` and `bundler/lib/bundler/version.rb`.
-*   Run `rake generate_changelog[4.0.0.beta1]` and `rake version:update_locked_bundler`.
-*   Run `DRYRUN=1 rake release` to verify that everything is working as expected.
-*   Push the release branch and open a PR to the stable branch. And confirm to CI passes.
-*   Tag the release commit with the proper version tag, e.g. `v4.0.0.beta1`.
-*   Push the tag to GitHub.
-*   Release `rubygems` with `bin/rake release`.
+*   Run `rake prepare_release[4.0.0.beta3]`, this will:
+    * Create the release branch like `release/4.0.0`.
+    * Bump up version number at `lib/rubygems.rb` and `bundler/lib/bundler/version.rb`.
+    * Run `rake version:update_locked_bundler`.
+    * Run `rake generate_changelog[4.0.0.beta1]`.
+    * Push the release branch and open a PR to the stable or master branch
+*   Run `DRYRUN=1 rake release` to verify that everything is working as expected. And confirm to CI passes on the release PR.
+*   Release `rubygems` with `bin/rake release`, this will:
+    * Run `rake check_deprecations` and package `rubygems-update` gem.
+    * Tag the release like `v4.0.0.beta3` and push the tag to GitHub.
+    * Push `rubygems-update-4.0.0.beta3` to RubyGems.org.
+    * Upload RubyGems tgz and zip files to s3 and create a GitHub release.
+    * Update the guides website and blog posts of rubygems.org.
 *   Release `bundler` with `bin/rake bundler:release`.
+    * Package `bundler` gem and run `rake man:check`.
+    * Tag the release like `v2.4.0.beta3` and push the tag to GitHub. And create a GitHub release.
+    * Push `bundler-2.4.0.beta3` to RubyGems.org.
 
 #### Post-release
 
