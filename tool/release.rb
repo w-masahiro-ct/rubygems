@@ -96,7 +96,7 @@ class Release
       @version = Gem::Version.new(version)
       @stable_branch = stable_branch
       @changelog = Changelog.for_rubygems(version)
-      @version_files = [File.expand_path("../lib/rubygems.rb", __dir__), File.expand_path("../rubygems-update.gemspec", __dir__)]
+      @version_files = [File.expand_path("../lib/rubygems.rb", __dir__)]
       @tag_prefix = "v"
     end
 
