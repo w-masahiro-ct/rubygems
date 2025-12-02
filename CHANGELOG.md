@@ -2,39 +2,6 @@
 
 ## 4.0.0 / 2025-12-03
 
-### Security:
-
-* Bump up vendored URI to 1.0.4. Pull request
-  [#9031](https://github.com/ruby/rubygems/pull/9031) by hsbt
-
-### Breaking changes:
-
-* Removed deprecated `-C` option from gem build. Pull request
-  [#9088](https://github.com/ruby/rubygems/pull/9088) by hsbt
-* Removed deprecated Gem::Specification#has_rdoc, has_rdoc= and has_rdoc?.
-  Pull request [#9084](https://github.com/ruby/rubygems/pull/9084) by hsbt
-* Removed deprecated `gem query` command. Pull request
-  [#9083](https://github.com/ruby/rubygems/pull/9083) by hsbt
-* Removed deprecated Gem::DependencyInstaller#find_gems_with_sources. Pull
-  request [#9082](https://github.com/ruby/rubygems/pull/9082) by hsbt
-* Remove deprecated methods of RubyGems. Pull request
-  [#9081](https://github.com/ruby/rubygems/pull/9081) by hsbt
-* Make verification methods private. Pull request
-  [#9051](https://github.com/ruby/rubygems/pull/9051) by tenderlove
-* Deprecate `--default` option from install command. Pull request
-  [#7588](https://github.com/ruby/rubygems/pull/7588) by hsbt
-* Switch to 4.0.0.dev in development version. Pull request
-  [#9002](https://github.com/ruby/rubygems/pull/9002) by hsbt
-* Removed `compatibility.rb` for RG 4.0. Pull request
-  [#8899](https://github.com/ruby/rubygems/pull/8899) by hsbt
-
-### Deprecations:
-
-* Deprecate comparing Gem::Version objects with strings. Pull request
-  [#9085](https://github.com/ruby/rubygems/pull/9085) by tenderlove
-* Deprecate `Gem::Specification#datadir`. Pull request
-  [#8900](https://github.com/ruby/rubygems/pull/8900) by hsbt
-
 ### Features:
 
 * Undeprecate `Gem::Version.new(nil)`. Pull request
@@ -46,7 +13,7 @@
 
 ### Performance:
 
-* Add `MAKEFLAGS=-j` by default before compiling:. Pull request
+* Add `MAKEFLAGS=-j` by default before compiling. Pull request
   [#9131](https://github.com/ruby/rubygems/pull/9131) by Edouard-chin
 * Remove some memoization. Pull request
   [#9017](https://github.com/ruby/rubygems/pull/9017) by tenderlove
@@ -63,19 +30,13 @@
 
 ### Enhancements:
 
-* Undeprecate Gem::Version#<=> against strings. Pull request
-  [#9110](https://github.com/ruby/rubygems/pull/9110) by byroot
 * Update all vendored libraries to latest version. Pull request
   [#9089](https://github.com/ruby/rubygems/pull/9089) by hsbt
 * Removed unused `Gem::Deprecate`. Pull request
   [#9090](https://github.com/ruby/rubygems/pull/9090) by hsbt
-* Test all tests of `make test-all` by ruby core. Pull request
-  [#9075](https://github.com/ruby/rubygems/pull/9075) by hsbt
 * Add debug logging information to see the time it took to download and
   install a gem. Pull request
   [#9066](https://github.com/ruby/rubygems/pull/9066) by Edouard-chin
-* Use `assert_ractor` for testing Ractor. Pull request
-  [#9069](https://github.com/ruby/rubygems/pull/9069) by hsbt
 * Fix constants in TAR to be frozen. Pull request
   [#9041](https://github.com/ruby/rubygems/pull/9041) by tenderlove
 * Remove open-ended and prerelease dependency warnings when building gems.
@@ -115,43 +76,6 @@
   request [#8939](https://github.com/ruby/rubygems/pull/8939) by
   deivid-rodriguez
 
-### Documentation:
-
-* Unified UPGRADING.md and extract blog.rubygems.org. Pull request
-  [#9148](https://github.com/ruby/rubygems/pull/9148) by hsbt
-* Remove italic formatting from changelog section headers. Pull request
-  [#9128](https://github.com/ruby/rubygems/pull/9128) by hsbt
-* [DOC] Fix the location of Gem::Deprecate document. Pull request
-  [#9065](https://github.com/ruby/rubygems/pull/9065) by nobu
-* Fix typo. Pull request
-  [#9012](https://github.com/ruby/rubygems/pull/9012) by etiennebarrie
-* Added document for Gem::Uninstaller. Pull request
-  [#8904](https://github.com/ruby/rubygems/pull/8904) by hsbt
-* Use mailto link in Code of Conduct. Pull request
-  [#8849](https://github.com/ruby/rubygems/pull/8849) by deivid-rodriguez
-* Update Code of Conduct email to conduct@rubygems.org. Pull request
-  [#8848](https://github.com/ruby/rubygems/pull/8848) by indirect
-
-## 4.0.0.beta2 / 2025-11-26
-
-### Deprecations:
-
-* Deprecate comparing Gem::Version objects with strings. Pull request
-  [#9085](https://github.com/ruby/rubygems/pull/9085) by tenderlove
-
-### Enhancements:
-
-* Undeprecate Gem::Version#<=> against strings. Pull request
-  [#9110](https://github.com/ruby/rubygems/pull/9110) by byroot
-* Installs bundler 4.0.0.beta2 as a default gem.
-
-### Bug fixes:
-
-* Respect `BUNDLE_VERSION` config at Gem::BundlerVersionFinder. Pull
-  request [#9106](https://github.com/ruby/rubygems/pull/9106) by hsbt
-
-## 4.0.0.beta1 / 2025-11-20
-
 ### Security:
 
 * Bump up vendored URI to 1.0.4. Pull request
@@ -173,8 +97,6 @@
   [#9051](https://github.com/ruby/rubygems/pull/9051) by tenderlove
 * Deprecate `--default` option from install command. Pull request
   [#7588](https://github.com/ruby/rubygems/pull/7588) by hsbt
-* Switch to 4.0.0.dev in development version. Pull request
-  [#9002](https://github.com/ruby/rubygems/pull/9002) by hsbt
 * Removed `compatibility.rb` for RG 4.0. Pull request
   [#8899](https://github.com/ruby/rubygems/pull/8899) by hsbt
 
@@ -183,62 +105,22 @@
 * Deprecate `Gem::Specification#datadir`. Pull request
   [#8900](https://github.com/ruby/rubygems/pull/8900) by hsbt
 
-### Features:
-
-* Undeprecate `Gem::Version.new(nil)`. Pull request
-  [#9086](https://github.com/ruby/rubygems/pull/9086) by tenderlove
-* Add pattern matching support to Gem::NameTuple. Pull request
-  [#9064](https://github.com/ruby/rubygems/pull/9064) by baweaver
-* Add pattern matching support to Gem::Platform. Pull request
-  [#9062](https://github.com/ruby/rubygems/pull/9062) by baweaver
-
-### Performance:
-
-* Remove some memoization. Pull request
-  [#9017](https://github.com/ruby/rubygems/pull/9017) by tenderlove
-* Pull `Gem.win_platform?` out of a hot path. Pull request
-  [#8983](https://github.com/ruby/rubygems/pull/8983) by tenderlove
-* Stop trying to remove every file on extraction. Pull request
-  [#8974](https://github.com/ruby/rubygems/pull/8974) by tenderlove
-* Use `IO.copy_stream` with IO object directly. Pull request
-  [#8970](https://github.com/ruby/rubygems/pull/8970) by tenderlove
-* Pass a file size to `IO.copy_stream`. Pull request
-  [#8966](https://github.com/ruby/rubygems/pull/8966) by tenderlove
-* Use File#chmod rather than FileUtils.chmod. Pull request
-  [#8965](https://github.com/ruby/rubygems/pull/8965) by tenderlove
-
-### Enhancements:
-
-* Update all vendored libraries to latest version. Pull request
-  [#9089](https://github.com/ruby/rubygems/pull/9089) by hsbt
-* Removed unused `Gem::Deprecate`. Pull request
-  [#9090](https://github.com/ruby/rubygems/pull/9090) by hsbt
-* Test all tests of `make test-all` by ruby core. Pull request
-  [#9075](https://github.com/ruby/rubygems/pull/9075) by hsbt
-* Add debug logging information to see the time it took to download and
-  install a gem. Pull request
-  [#9066](https://github.com/ruby/rubygems/pull/9066) by Edouard-chin
-* Use `assert_ractor` for testing Ractor. Pull request
-  [#9069](https://github.com/ruby/rubygems/pull/9069) by hsbt
-* Fix constants in TAR to be frozen. Pull request
-  [#9041](https://github.com/ruby/rubygems/pull/9041) by tenderlove
-* Remove open-ended and prerelease dependency warnings when building gems.
-  Pull request [#9050](https://github.com/ruby/rubygems/pull/9050) by
-  jeremyevans
-* Revamp CmakeBuilder. Pull request
-  [#8753](https://github.com/ruby/rubygems/pull/8753) by cfis
-* Restrict what schemes are acceptable in the remote fetcher. Pull request
-  [#9022](https://github.com/ruby/rubygems/pull/9022) by tenderlove
-* Don't fail if there is no makefile, simply don't do anything. Pull
-  request [#8879](https://github.com/ruby/rubygems/pull/8879) by ioquatix
-* Installs bundler 4.0.0.beta1 as a default gem.
-
 ### Documentation:
 
+* Unified UPGRADING.md and extract blog.rubygems.org. Pull request
+  [#9148](https://github.com/ruby/rubygems/pull/9148) by hsbt
+* Remove italic formatting from changelog section headers. Pull request
+  [#9128](https://github.com/ruby/rubygems/pull/9128) by hsbt
 * [DOC] Fix the location of Gem::Deprecate document. Pull request
   [#9065](https://github.com/ruby/rubygems/pull/9065) by nobu
 * Fix typo. Pull request
   [#9012](https://github.com/ruby/rubygems/pull/9012) by etiennebarrie
+* Added document for Gem::Uninstaller. Pull request
+  [#8904](https://github.com/ruby/rubygems/pull/8904) by hsbt
+* Use mailto link in Code of Conduct. Pull request
+  [#8849](https://github.com/ruby/rubygems/pull/8849) by deivid-rodriguez
+* Update Code of Conduct email to conduct@rubygems.org. Pull request
+  [#8848](https://github.com/ruby/rubygems/pull/8848) by indirect
 
 ## 3.7.2 / 2025-09-09
 
