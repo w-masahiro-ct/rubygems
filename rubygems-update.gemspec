@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = [
     "LICENSE.txt", "doc/MAINTAINERS.txt",
     "MIT.txt", "Manifest.txt", "README.md",
-    "doc/rubygems/UPGRADING.md", "doc/rubygems/POLICIES.md", "CODE_OF_CONDUCT.md",
+    "doc/UPGRADING.md", "doc/rubygems/POLICIES.md", "CODE_OF_CONDUCT.md",
     "doc/rubygems/CONTRIBUTING.md",
     "bundler/LICENSE.md", "bundler/README.md",
     "hide_lib_for_update/note.txt", *Dir["bundler/lib/bundler/man/*.1", base: __dir__]

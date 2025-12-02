@@ -94,7 +94,7 @@ RDoc::Task.new rdoc: "docs", clobber_rdoc: "clobber_docs" do |doc|
 
   rdoc_files = Rake::FileList.new %w[lib bundler/lib]
   rdoc_files.add %w[CHANGELOG.md LICENSE.txt MIT.txt CODE_OF_CONDUCT.md doc/rubygems/CONTRIBUTING.md
-                    doc/MAINTAINERS.txt Manifest.txt doc/rubygems/POLICIES.md README.md doc/rubygems/UPGRADING.md bundler/CHANGELOG.md
+                    doc/MAINTAINERS.txt Manifest.txt doc/rubygems/POLICIES.md README.md doc/UPGRADING.md bundler/CHANGELOG.md
                     doc/bundler/contributing/README.md bundler/LICENSE.md bundler/README.md
                     hide_lib_for_update/note.txt].map(&:freeze)
 
@@ -478,10 +478,9 @@ module Rubygems
       # Restore important documents
       %w[
         doc/MAINTAINERS.txt
-        doc/bundler/UPGRADING.md
+        doc/UPGRADING.md
         doc/rubygems/CONTRIBUTING.md
         doc/rubygems/POLICIES.md
-        doc/rubygems/UPGRADING.md
       ].each {|f| files << f }
 
       files.sort
