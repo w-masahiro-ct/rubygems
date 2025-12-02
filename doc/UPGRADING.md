@@ -14,6 +14,13 @@
     $ gem install bundler -v 2.7.2
     $ bundle update --bundler=2.7.2
 
+## Install a pre-release version
+
+    $ gem update --system --pre
+
+    $ gem install bundler --pre
+    $ bundle update --bundler=4.0.0.beta1
+
 ## Install from source
 
 *   Download from: https://rubygems.org/pages/download
