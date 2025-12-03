@@ -82,6 +82,10 @@ To run an individual test file location for example in `spec/install/gems/standa
 
     bin/rspec spec/install/gems/standalone_spec.rb
 
+To test Rubygems changes in bundler, set the path to your local Rubygems copy using the `RGV` environment variable:
+
+    RGV=.. bin/rspec spec/install/gems/standalone_spec.rb
+
 ### Checking code style
 
 You can check compliance with our code style with
