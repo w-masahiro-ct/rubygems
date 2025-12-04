@@ -84,12 +84,22 @@ We only release major breaking changes when incrementing the _major_ version of 
 
 ### Steps for patch releases
 
+#### Preparation
+
 *   Confirm all PRs that you want backported are properly tagged with `rubygems: <type>` or `bundler: <type>` labels at GitHub.
+*   Confirm to set `AWS_PROFILE` and `GITHUB_RELEASE_PAT` environment variables.
+
+#### Release
+
 *   Run `bin/rake prepare_release[<target_rubygems_version>]`. This will create a PR to the stable branch with the backports included in the release, and proper changelogs and version bumps. It will also create a PR to merge release changelogs into master.
 *   If you need to make any manual changes, do so in the release PR created above. and re-run `rake generate_changelog[<target_rubygems_version>]` to update changelogs and run `git rebase -i` as needed. Finally, force push the release PR branch.
 *   Once CI passes, merge the release PR, switch to the stable branch and pull the PR just merged.
 *   Release `bundler` with `bin/rake bundler:release`.
 *   Release `rubygems` with `bin/rake release`.
+
+#### Post-release
+
+* Merge the changelog PR created above into master.
 
 ### Steps for minor and major releases
 
@@ -119,6 +129,10 @@ We only release major breaking changes when incrementing the _major_ version of 
     * Push `bundler-2.4.0.beta3` to RubyGems.org.
 
 #### Post-release
+
+*   Merge the changelog PR created above into master.
+
+The following changes are needed to prepare for the next development cycle:
 
 *   Replace version numbers with the next ".dev" version.
 *   Run `rake version:update_locked_bundler`, and push that change to the master PR.
