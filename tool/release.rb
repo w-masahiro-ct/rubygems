@@ -309,13 +309,8 @@ class Release
   end
 
   def unreleased_pr_ids
-    commits = if @level == :minor_or_major
-      `git log --format=%h #{@previous_release_tag}..HEAD`.split("\n")
-    else
-      `git log --format=%B #{@previous_release_tag}..HEAD`.split("\n").filter_map do |line|
-        line[/\(cherry picked from commit ([0-9a-f]+)\)/, 1]&.slice(0, 12)
-      end
-    end
+    head = @level == :minor_or_major ? "HEAD" : "master"
+    commits = `git log --format=%h #{@previous_release_tag}..#{head}`.split("\n")
 
     # GitHub search API has a rate limit of 30 requests per minute for authenticated users
     rate_limit = 28
