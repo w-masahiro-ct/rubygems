@@ -91,11 +91,14 @@ We only release major breaking changes when incrementing the _major_ version of 
 
 #### Release
 
-*   Run `bin/rake prepare_release[<target_rubygems_version>]`. This will create a PR to the stable branch with the backports included in the release, and proper changelogs and version bumps. It will also create a PR to merge release changelogs into master.
-*   If you need to make any manual changes, do so in the release PR created above. and re-run `rake generate_changelog[<target_rubygems_version>]` to update changelogs and run `git rebase -i` as needed. Finally, force push the release PR branch.
+*   Run `DRYRUN=1 bin/rake prepare_release[<target_rubygems_version>]` to verify that everything is working as expected.
+*   Run `bin/rake prepare_release[<target_rubygems_version>]`, this will:
+    *  Create a PR to the stable branch with the backports included in the release.
+    *  Generate proper changelogs and version bumps. It will also create a PR to merge release changelogs into master.
+*   If you need to make any manual changes, do so in the release PR created above and re-run `rake generate_changelog[<target_rubygems_version>]` to update changelogs and run `git rebase -i` as needed. Finally, force push the release PR branch.
 *   Once CI passes, merge the release PR, switch to the stable branch and pull the PR just merged.
-*   Release `bundler` with `bin/rake bundler:release`.
 *   Release `rubygems` with `bin/rake release`.
+*   Release `bundler` with `bin/rake bundler:release`.
 
 #### Post-release
 
