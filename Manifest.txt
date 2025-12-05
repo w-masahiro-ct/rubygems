@@ -529,7 +529,6 @@ lib/rubygems/uri_formatter.rb
 lib/rubygems/user_interaction.rb
 lib/rubygems/util.rb
 lib/rubygems/util/licenses.rb
-lib/rubygems/util/list.rb
 lib/rubygems/validator.rb
 lib/rubygems/vendor/.document
 lib/rubygems/vendor/molinillo/LICENSE
