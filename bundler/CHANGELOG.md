@@ -1,5 +1,20 @@
 # Changelog
 
+## 4.0.1 (2025-12-09)
+
+### Performance:
+
+  - Increase connection pool to allow for up to 70% speed increase on `bundle install` [#9087](https://github.com/ruby/rubygems/pull/9087)
+
+### Enhancements:
+
+  - Fix the config suggestion in the warning for `$ bundle` [#9164](https://github.com/ruby/rubygems/pull/9164)
+  - Fix native extension loading in newgem template for RHEL-based systems [#9156](https://github.com/ruby/rubygems/pull/9156)
+
+### Bug fixes:
+
+  - Fix Bundler removing executables after creating them [#9169](https://github.com/ruby/rubygems/pull/9169)
+
 ## 4.0.0 (2025-12-03)
 
 ### Features:
