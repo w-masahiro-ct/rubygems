@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.0.1 / 2025-12-09
+
+### Enhancements:
+
+* Installs bundler 4.0.1 as a default gem.
+
+### Bug fixes:
+
+* Fixed unexpected default bundler installation. Pull request
+  [#9167](https://github.com/ruby/rubygems/pull/9167) by hsbt
+
+### Documentation:
+
+* Update contributing docs with `RGV`. Pull request
+  [#9155](https://github.com/ruby/rubygems/pull/9155) by eileencodes
+
 ## 4.0.0 / 2025-12-03
 
 ### Features:
