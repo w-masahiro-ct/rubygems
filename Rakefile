@@ -712,6 +712,8 @@ namespace :bundler do
     Rake::Task["bundler:build_metadata:clean"].tap(&:reenable).invoke
   end
 
+  task "build" => ["bundler:release:check_ruby_version"]
+
   desc "Push to rubygems.org"
   task "release:rubygem_push" => ["bundler:release:setup", "man:check", "bundler:build_metadata", "check_release_preparations", "bundler:release:github"]
 
@@ -731,6 +733,10 @@ namespace :bundler do
       gemspec_version = Bundler::GemHelper.gemspec.version
 
       Release.for_bundler(gemspec_version).create_for_github!
+    end
+
+    task :check_ruby_version do
+      raise "bundler:build need to released Ruby for using nokogiri" if RUBY_PATCHLEVEL.to_i < 0
     end
   end
 end
