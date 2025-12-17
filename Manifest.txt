@@ -530,7 +530,6 @@ lib/rubygems/user_interaction.rb
 lib/rubygems/util.rb
 lib/rubygems/util/atomic_file_writer.rb
 lib/rubygems/util/licenses.rb
-lib/rubygems/util/list.rb
 lib/rubygems/validator.rb
 lib/rubygems/vendor/.document
 lib/rubygems/vendor/molinillo/LICENSE
