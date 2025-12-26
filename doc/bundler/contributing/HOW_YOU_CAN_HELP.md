@@ -2,7 +2,7 @@
 
 If you're interested in contributing to Bundler, that's awesome! We'd love your help.
 
-If at any point you get stuck, here's how to [get in touch with the Bundler team for help](https://slack.bundler.io).
+If at any point you get stuck, here's how to [get in touch with the Bundler team for help](https://bundler.slack.com).
 
 ## First contribution suggestions
 
@@ -23,4 +23,4 @@ Generally, great ways to get started helping out with Bundler are:
     - get started setting up your dev environment with [these instructions](../development/SETUP.md)
   - backfilling [unit tests](https://github.com/ruby/rubygems/tree/master/bundler/spec/bundler) for modules that lack coverage.
 
-If nothing on those lists looks good, [talk to us](https://slack.bundler.io/), and we'll figure out what you can help with. We can absolutely use your help, no matter what level of programming skill you have at the moment.
+If nothing on those lists looks good, [talk to us](https://bundler.slack.com/), and we'll figure out what you can help with. We can absolutely use your help, no matter what level of programming skill you have at the moment.
