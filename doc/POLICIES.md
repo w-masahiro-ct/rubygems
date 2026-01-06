@@ -1,3 +1,66 @@
+# RubyGems Policies
+
+## Pull Requests
+
+Contributions to RubyGems are made via GitHub pull requests, which must be
+approved by a project committer other than the author. To approve a PR, a
+maintainer can use GitHubs PR review feature. After that, if the original author
+is happy to merge the PR, she can press the merge button.
+
+## Long-Term Support
+
+RubyGems will support Ruby versions for as long as the Ruby team supports that
+Ruby version. That means that the latest RubyGems release will always support
+the currently-supported Ruby versions, and RubyGems security fixes will be
+released for any RubyGems version that shipped inside a currently-supported
+Ruby version.
+
+### Bugfix Releases
+
+RubyGems generally releases bugfixes from the master branch. We may mix bug
+fixes and new features in the same release. RubyGems does not guarantee it
+will ship bugfix releases for previous minor or major versions.
+
+For example, after RubyGems 2.5 is released, the RubyGems team will not
+provide non-security fixes for RubyGems 2.4, or any earlier versions.
+
+### Security Releases
+
+Security releases will be made for RubyGems minor versions that were included
+in a currently-supported Ruby release.
+
+For example, since RubyGems 2.0 was shipped in Ruby 2.0, RubyGems 2.0 will
+receive security fixes until Ruby 2.0 reaches end-of-life.
+
+### Ruby Version Support
+
+When a Ruby version reaches end-of-life the following minor release of
+RubyGems will drop backwards compatibility with that Ruby version.
+
+For example, since Ruby 2.2 has reached end-of-life, future RubyGems minor
+releases will only support Ruby 2.3 and above. As of this writing RubyGems is
+at version 2.7, so when RubyGems 2.8 is released, it will only support Ruby
+2.3 and later.
+
+## Committer Access
+
+RubyGems committers may lose their commit privileges if they are inactive for
+longer than 12 months. Committer permission may be restored upon request by
+having a pull request merged.
+
+This is designed to improve the maintainability of RubyGems by requiring
+committers to maintain familiarity with RubyGems activity and to improve the
+security of RubyGems by preventing idle committers from having their commit
+permissions compromised or exposed.
+
+## Changing These Policies
+
+These policies were set in order to reduce the burden of maintenance and to keep
+committers current with existing development and policies. RubyGems work is
+primarily volunteer-driven which limits the ability to provide long-term
+support. By joining [Ruby Central](https://rubycentral.org/#/portal/signup) you
+can help extend support for older RubyGems versions.
+
 # Bundler Policies
 
 This document is an attempt to record the policies and processes that are used to govern the Bundler project--it's not fixed or permanent, and will likely evolve as events warrant.
@@ -99,3 +162,45 @@ When it comes to carrying out our own policies, we're all regular humans trying 
 Policies are not set in stone, and may be revised if policy violations are found to be in the spirit of the project goals. Likewise, actions that violate the spirit of the project goals will be considered policy violations, and enforcement action will be taken. We're not interested in rules-lawyering, and we will take action when needed to ensure that everyone feels safe and included.
 
 If you are comfortable reporting issues to the entire Bundler team, please send an email to team@bundler.io. If you are not comfortable reporting to the entire team, for any reason, please check the [maintainers team list](https://bundler.io/team) and use email, Twitter, or Slack to report to a single maintainer of your choice. Anyone violating a policy or goal is expected to cooperate with the team (and the reporter, if they request it) to resolve the issue in a way that follows the project goals.
+
+# Team changes
+
+This file documents how to add and remove team members. For the rules governing adding and removing team members, see [POLICIES](../POLICIES.md).
+
+## Adding a new team member
+
+Interested in adding someone to the team? Here's the process.
+
+1. An existing team member nominates a potential team member to the rest of the team.
+2. The existing team reaches consensus about whether to invite the potential member.
+3. The nominator asks the potential member if they would like to join the team.
+4. The nominator also sends the candidate a link to [POLICIES](../POLICIES.md) as an orientation for being on the team.
+5. If the potential member accepts:
+    - Invite them to the maintainers Slack channel
+    - Add them to the [maintainers team][org_team] on GitHub
+    - Add them to the [Team page][team] on bundler.io, in the [maintainers list][maintainers]
+    - Add them to the [list of team members][list] in `contributors.rake`
+    - Add them to the authors list in `bundler.gemspec` && `rubygems-update.gemspec`
+    - Add them to the owners list on RubyGems.org by running
+      ```
+      $ gem owner -a EMAIL bundler
+      ```
+
+
+## Removing a team member
+
+When the conditions in [POLICIES](../POLICIES.md#maintainer-team-guidelines) are met, or when team members choose to retire, here's how to remove someone from the team.
+
+- Remove them from the owners list on RubyGems.org by running
+  ```
+  $ gem owner -r EMAIL bundler
+  ```
+- Remove their entry on the [Team page][team] on bundler.io, in the [maintainers list][maintainers]
+- Remove them from the [list of team members][list] in `contributors.rake`
+- Remove them from the [maintainers team][org_team] on GitHub
+- Remove them from the maintainers Slack channel
+
+[org_team]: https://github.com/orgs/rubygems/teams/maintainers/members
+[team]: https://bundler.io/contributors.html
+[maintainers]: https://github.com/rubygems/bundler-site/blob/f00eb65da0697c2cb0e7b4d6e5ba47ecc1538eb2/source/contributors.html.haml#L25
+[list]: https://github.com/rubygems/bundler-site/blob/f00eb65da0697c2cb0e7b4d6e5ba47ecc1538eb2/lib/tasks/contributors.rake#L8
