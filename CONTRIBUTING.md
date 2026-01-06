@@ -1,96 +1,71 @@
-# How to contribute
+# How to Contribute
 
-Community involvement is essential to RubyGems. We want to keep it as easy as
-possible to contribute changes. There are a few guidelines that we need
-contributors to follow to reduce the time it takes to get changes merged in.
+Thank you for your interest in contributing to the ruby/rubygems! Community involvement is essential to both RubyGems and Bundler. We welcome contributions from everyone, and we want to keep it as easy as possible to contribute changes.
 
-## Guidelines
+## Code of Conduct
 
-1.  New features should be coupled with tests.
+By participating in this project, you agree to abide by the terms of the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-2.  Ensure that your code blends well with ours:
-    *   No trailing whitespace
-    *   Match indentation (two spaces)
-    *   Match coding style (run `bin/rake rubocop`)
+## Getting Started
 
-3.  If any new files are added or existing files removed in a commit or PR,
-    please update the `Manifest.txt` accordingly. This can be done by running
-    `bin/rake update_manifest`
+Before submitting a contribution:
 
-4.  Don't modify the history file or version number.
+1. **Set up your development environment** - See [GETTING_STARTED.md](doc/GETTING_STARTED.md) for detailed setup instructions
+2. **Understand the repository structure** - This is a monorepo containing both RubyGems and Bundler:
+   - RubyGems code is in the root `lib/` and `exe/` directories
+   - Bundler code is in the `bundler/` subdirectory
 
-5.  If you have any questions, Feel free to join us on Slack, you can register
-    by signing up at http://slack.bundler.io or file an issue here:
-    http://github.com/ruby/rubygems/issues
+## Contribution Guidelines
 
+All contributions to this repository should follow these guidelines:
 
-For more information and ideas on how to contribute to RubyGems ecosystem, see
-here: https://guides.rubygems.org/contributing/
+1. **Write tests** - New features must be coupled with tests. Bug fixes should include a test that reproduces the issue.
 
-# Community
+2. **Code style compliance**:
+   - No trailing whitespace
+   - Use two-space indentation
+   - Run `bin/rake rubocop` to check style compliance
 
-Community is an important part of all we do. If you'd like to be part of the Bundler community, you can jump right in and start helping make Bundler better for everyone who uses it.
+3. **File management** (RubyGems only):
+   - If you add or remove files in the RubyGems portion of the repo, update `Manifest.txt` by running `bin/rake update_manifest`
 
-It would be tremendously helpful to have more people answering questions about Bundler (and often simply about [RubyGems](https://github.com/ruby/rubygems) or Ruby itself) in our [issue tracker](https://github.com/ruby/rubygems/issues) or on [Stack Overflow](https://stackoverflow.com/questions/tagged/bundler).
+4. **Preserve version history**:
+   - Don't modify version numbers or changelog files directly; maintainers handle these
 
-Additional documentation and explanation is always helpful, too. If you have any suggestions for the Bundler website [bundler.io](https://bundler.io), we would absolutely love it if you opened an issue or pull request on the [bundler-site](https://github.com/rubygems/bundler-site) repository.
+5. **Ask questions** - Have questions? Feel free to [open an issue](https://github.com/ruby/rubygems/issues)
 
-Sharing your experiences and discoveries by writing them up is a valuable way to help others who have similar problems or experiences in the future. You can write a blog post, create an example and commit it to GitHub, take screenshots, or make videos.
+For more information on contributing to the RubyGems ecosystem, see [guides.rubygems.org/contributing](https://guides.rubygems.org/contributing/).
 
-Publishing examples of how Bundler is used helps everyone, and we've discovered that people already use it in ways that we never imagined when we were writing it. If you're still not sure what to write about, there are also several projects doing interesting things based on Bundler. They could probably use publicity too.
+## First-Time Contributors
 
-Finally, all contributors to the Bundler project must agree to the contributor [code of conduct](https://bundler.io/conduct.html). By participating in this project you agree to abide by its terms.
-# How you can help: your first commits!
+We track [good first issues](https://github.com/ruby/rubygems/issues?q=is%3Aissue+is%3Aopen+label%3Abundler+label%3A%22good+first+issue%22) to help new contributors get started. Here are some great ways to begin:
 
-If you're interested in contributing to Bundler, that's awesome! We'd love your help.
+- **Test prerelease versions**: Run `gem install bundler --pre` and report any issues
+- **Report bugs or suggest features**: [Open an issue](https://github.com/ruby/rubygems/issues/new?labels=Bundler&template=bundler-related-issue.md) (see [new features documentation](bundler/development/NEW_FEATURES.md))
+- **Improve documentation**: Contribute to the [Bundler website](https://bundler.io) or [man pages](https://bundler.io/man/bundle.1.html)
+- **Triage issues**: [Check issue completeness](doc/ISSUE_TRIAGE.md) and help close incomplete reports
+- **Write tests**: Add failing tests for [reported bugs](https://github.com/ruby/rubygems/issues) or backfill missing test coverage
+- **Review pull requests**: Provide feedback on [pull requests](https://github.com/ruby/rubygems/pulls)
+- **Improve code**: No patch is too small—fix typos, improve code clarity, or clean up whitespace
+- **Contribute features**: See [adding new features](bundler/development/NEW_FEATURES.md)
 
-If at any point you get stuck, here's how to [get in touch with the Bundler team for help](https://bundler.slack.com).
+## Pull Request Guidelines
 
-## First contribution suggestions
+See [bundler/development/PULL_REQUESTS.md](bundler/development/PULL_REQUESTS.md) for detailed guidelines.
 
-We track [small bugs and features](https://github.com/ruby/rubygems/issues?q=is%3Aissue+is%3Aopen+label%3Abundler+label%3A%22good+first+issue%22) so that anyone who wants to help can start with something that's not too overwhelming.
+## Community and Support
 
-Generally, great ways to get started helping out with Bundler are:
+Community involvement is vital to both projects:
 
-  - using prerelease versions (run `gem install bundler --pre`)
-  - [reporting bugs you encounter or suggesting new features](https://github.com/ruby/rubygems/issues/new?labels=Bundler&template=bundler-related-issue.md)
-    - see the [new features documentation](../development/NEW_FEATURES.md) for more
-  - adding to or editing [the Bundler documentation website](https://bundler.io) and [Bundler man pages](https://bundler.io/man/bundle.1.html)
-  - [checking issues for completeness](BUG_TRIAGE.md)
-  - closing issues that are not complete
-  - adding a failing test for reproducible [reported bugs](https://github.com/ruby/rubygems/issues)
-  - reviewing [pull requests](https://github.com/ruby/rubygems/pulls) and suggesting improvements
-  - improving existing code
-  - writing code (no patch is too small! fix typos or bad whitespace)
-    - get started setting up your dev environment with [these instructions](../development/SETUP.md)
-  - backfilling [unit tests](https://github.com/ruby/rubygems/tree/master/bundler/spec/bundler) for modules that lack coverage.
+- **Answer questions**: Help others on the [issue tracker](https://github.com/ruby/rubygems/issues) or [Stack Overflow](https://stackoverflow.com/questions/tagged/bundler) (questions about RubyGems, Bundler, and Ruby in general are welcome)
+- **Share knowledge**: Write blog posts, create examples, make videos, or share your experiences
+- **Improve documentation**: Suggest improvements to [bundler.io](https://bundler.io) via issues or pull requests on the [bundler-site](https://github.com/rubygems/bundler-site) repository
 
-If nothing on those lists looks good, [talk to us](https://bundler.slack.com/), and we'll figure out what you can help with. We can absolutely use your help, no matter what level of programming skill you have at the moment.
-# Bundler Contributor Guidelines
+## Supporting the Projects
 
-Thank you for your interest in making Bundler better! We welcome contributions from everyone. Dozens of contributors like you have submitted feature improvements, fixed bugs, and written new documentation. [Join the Bundler Slack community](https://slack.bundler.io/) to connect with the Bundler core team and other contributors like you.
+Both RubyGems and Bundler are managed by [Ruby Central](https://rubycentral.org), a non-profit organization supporting the Ruby community through projects like these, as well as [RubyConf](https://rubyconf.org) and [RubyGems.org](https://rubygems.org).
 
-Before submitting a contribution, read through the following guidelines:
+You can support Ruby Central by:
 
-* [Bundler Code of Conduct](https://github.com/ruby/rubygems/blob/master/CODE_OF_CONDUCT.md) (By participating in Bundler, you agree to abide by the terms laid out in the CoC.)
-* [Pull Request Guidelines](../development/PULL_REQUESTS.md)
-
-And be sure to [set up your development environment](../development/SETUP.md).
-
-## Feature Requests
-
-To request substantial changes to Bundler and/or Bundler documentation, please refer to the [README](https://github.com/rubygems/rfcs/blob/master/README.md) in the [RFC repository](https://github.com/rubygems/rfcs) for instructions.
-
-## Contributing to Bundler
-
-Here are the different ways you can start contributing to the Bundler project:
-
-* [First contribution suggestions](HOW_YOU_CAN_HELP.md)
-* [Adding new features](../development/NEW_FEATURES.md)
-* [Triaging bugs](BUG_TRIAGE.md)
-* [Writing documentation](../documentation/WRITING.md)
-* [Community engagement](COMMUNITY.md)
-
-## Supporting Bundler
-
-RubyGems is managed by [Ruby Central](https://rubycentral.org), a non-profit organization that supports the Ruby community through projects like this one, as well as [RubyConf](https://rubyconf.org), [RailsConf](https://railsconf.org), and [RubyGems.org](https://rubygems.org). You can support Ruby Central by attending or [sponsoring](sponsors@rubycentral.org) a conference, or by [joining as a supporting member](https://rubycentral.org/#/portal/signup).
+- Attending or [sponsoring](mailto:sponsors@rubycentral.org) a conference
+- [Joining as a supporting member](https://rubycentral.org/#/portal/signup)
