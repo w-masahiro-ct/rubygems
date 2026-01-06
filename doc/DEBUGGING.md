@@ -2,7 +2,7 @@
 
 Debugging Bundler can be challenging, don't be discouraged 🤗.
 
-Make sure you've followed the [development setup](SETUP.md) docs before trying to debug.
+Make sure you've followed the [development setup](GETTING_STARTED.md) docs before trying to debug.
 
 ## Print debugging
 
@@ -50,7 +50,7 @@ RUBYOPT=-rpry-byebug dbundle # for pry-byebug
 
 ### Local setup
 
-The easiest way to test locally is to set up a directory with a Gemfile and run your Bundler shell alias (see the [development setup](SETUP.md) docs for instructions on setting up the alias).
+The easiest way to test locally is to set up a directory with a Gemfile and run your Bundler shell alias (see the [development setup](GETTING_STARTED.md) docs for instructions on setting up the alias).
 
 We recommend putting this directory inside of `tmp` so that your local tests don't accidentally get committed.
 

@@ -34,7 +34,8 @@ Please ensure that the commit messages included in the pull request __do not__ h
 If you want to use these mechanisms, please instead include them in the pull request description. This prevents multiple notifications or references being created on commit rebases or pull request/branch force pushes.
 
 Additionally, do not use `[ci skip]` or `[skip ci]` mechanisms in your pull request titles/descriptions or commit messages. Every potential commit and pull request should run through Bundler's CI system. This applies to all changes/commits (ex. even a change to just documentation or the removal of a comment).
-# Merging a PR
+
+## Merging a PR
 
 Bundler requires all CI status checks to pass before a PR can me merged. So make
 sure that's the case before merging.

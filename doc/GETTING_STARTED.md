@@ -117,4 +117,4 @@ See [Git commit signing documentation](https://git-scm.com/book/en/v2/Git-Tools-
 
 ### Debugging
 
-See [DEBUGGING.md](../bundler/development/DEBUGGING.md) for debugging tips and techniques.
+See [DEBUGGING.md](DEBUGGING.md) for debugging tips and techniques.

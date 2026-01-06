@@ -36,7 +36,7 @@ When examining a ticket, consider these key questions:
 Once you've reproduced and understand an issue, you can help fix it:
 
 1. **Discuss on the issue**: Coordinate with others to avoid duplicate work and gather feedback.
-2. **Follow the pull request guide**: See [PULL_REQUESTS.md](development/PULL_REQUESTS.md).
+2. **Follow the pull request guide**: See [PULL_REQUESTS.md](PULL_REQUESTS.md).
 3. **Write tests**: Commit changes with tests on a named branch in your fork.
 4. **Submit a pull request**: See [about pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 

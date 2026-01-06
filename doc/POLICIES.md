@@ -26,7 +26,7 @@ approved by a project committer other than the author. To approve a PR, a
 maintainer can use GitHubs PR review feature. After that, if the original author
 is happy to merge the PR, she can press the merge button.
 
-Anyone is welcome to [contribute to Bundler](README.md). Contributed code will be released under the same license as the existing codebase.
+Anyone is welcome to [contribute](../CONTRIBUTING.md). Contributed code will be released under the same license as the existing codebase.
 
 Pull requests must have passing tests to be merged. Code changes must also include tests for the new behavior. Squashing commits is not required.
 
@@ -126,7 +126,7 @@ Interested in adding someone to the team? Here's the process.
 1. An existing team member nominates a potential team member to the rest of the team.
 2. The existing team reaches consensus about whether to invite the potential member.
 3. The nominator asks the potential member if they would like to join the team.
-4. The nominator also sends the candidate a link to [POLICIES](../POLICIES.md) as an orientation for being on the team.
+4. The nominator also sends the candidate a link to [POLICIES](POLICIES.md) as an orientation for being on the team.
 5. If the potential member accepts:
     - Invite them to the maintainers Slack channel
     - Add them to the [maintainers team][org_team] on GitHub
