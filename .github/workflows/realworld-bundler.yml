@@ -28,11 +28,13 @@ jobs:
           - { name: ruby-3.2, value: 3.2.9 }
           - { name: ruby-3.3, value: 3.3.9 }
           - { name: ruby-3.4, value: 3.4.5 }
+          - { name: ruby-4.0, value: 4.0.0 }
 
         include:
           - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-3.2, value: 3.2.9 } }
           - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-3.3, value: 3.3.9 } }
           - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-3.4, value: 3.4.5 } }
+          - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-4.0, value: 4.0.0 } }
     env:
       RGV: ..
       RUBYOPT: --disable-gems
