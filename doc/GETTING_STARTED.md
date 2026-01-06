@@ -1,6 +1,6 @@
-## Getting Started
+# Getting Started
 
-### Prerequisites and Setup
+## Prerequisites and Setup
 
 [Fork the ruby/rubygems repo](https://github.com/ruby/rubygems) and clone the fork onto your machine. ([Follow this tutorial](https://help.github.com/articles/fork-a-repo/) for instructions on forking a repo.)
 
@@ -19,23 +19,23 @@ Install development dependencies from the repository root directory:
 > location with something like `export GEM_HOME=/tmp/rubygems.gems` and try
 > again.
 
-### Testing Your Local Changes
+## Testing Your Local Changes
 
-#### RubyGems Commands
+### RubyGems Commands
 
 To run RubyGems commands like `gem install` from your local copy:
 
     ruby -Ilib exe/gem install
 
-#### Bundler Commands
+### Bundler Commands
 
 To run Bundler commands like `bundle install` from your local copy:
 
     bundler/bin/bundle install
 
-### Running Tests
+## Running Tests
 
-#### RubyGems Tests
+### RubyGems Tests
 
 To run the entire RubyGems test suite:
 
@@ -49,7 +49,7 @@ To run a specific test method named `test_default`:
 
     ruby -Ilib:test:bundler/lib test/rubygems/test_deprecate.rb -n /test_default/
 
-#### Bundler Tests
+### Bundler Tests
 
 To run the entire Bundler test suite in parallel from the `bundler/` directory:
 
@@ -63,7 +63,7 @@ To run an individual Bundler test file, for example `spec/install/gems/standalon
 
     bin/rspec spec/install/gems/standalone_spec.rb
 
-### Developing Bundler and RubyGems Together
+## Developing Bundler and RubyGems Together
 
 When developing Bundler features or bug fixes that require changes in RubyGems, you can set the `RGV` environment variable to point to the repository root so Bundler's test suite picks up those changes:
 
@@ -75,7 +75,7 @@ You can also test against specific RubyGems versions:
 
 It's recommended to set this variable permanently using [direnv](https://direnv.net) for consistent development.
 
-### Code Style and Quality
+## Code Style and Quality
 
 Check code style compliance:
 
@@ -85,17 +85,19 @@ Optionally configure git hooks to check this before every commit:
 
     bin/rake git_hooks
 
-### Shell Aliases (Optional)
+## Shell Aliases (Optional)
 
 Set up a shell alias to run Bundler from your clone for convenience.
 
-**Bash:**
+### Bash
+
+Add this to your `~/.bashrc` or `~/.bash_profile`:
 
     alias dbundle='ruby /[repo root]/bundler/bin/bundle'
 
 See [this tutorial](https://www.moncefbelyamani.com/create-aliases-in-bash-profile-to-assign-shortcuts-for-common-terminal-commands/) for adding aliases to your `~/.bashrc` profile.
 
-**Windows (PowerShell):**
+### Windows (PowerShell)
 
 Add this to your [PowerShell profile](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.4) (use `vim $profile` on the command line if you have `vim` installed):
 
@@ -109,7 +111,7 @@ function dbundle
 
 For a better command line experience on Windows, consider using [Windows Terminal](https://github.com/microsoft/terminal).
 
-### Git Commits
+## Git Commits
 
 Please sign your commits. Although not required to contribute, it ensures that code you submit wasn't altered during transfer and proves it came from you.
 

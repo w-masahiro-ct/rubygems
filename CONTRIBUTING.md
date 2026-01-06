@@ -1,6 +1,6 @@
 # How to Contribute
 
-Thank you for your interest in contributing to the ruby/rubygems! Community involvement is essential to both RubyGems and Bundler. We welcome contributions from everyone, and we want to keep it as easy as possible to contribute changes.
+Thank you for your interest in contributing to RubyGems and Bundler! Community involvement is essential to both RubyGems and Bundler. We welcome contributions from everyone, and we want to keep it as easy as possible to contribute changes.
 
 ## Code of Conduct
 
@@ -41,17 +41,17 @@ For more information on contributing to the RubyGems ecosystem, see [guides.ruby
 We track [good first issues](https://github.com/ruby/rubygems/issues?q=is%3Aissue+is%3Aopen+label%3Abundler+label%3A%22good+first+issue%22) to help new contributors get started. Here are some great ways to begin:
 
 - **Test prerelease versions**: Run `gem install bundler --pre` and report any issues
-- **Report bugs or suggest features**: [Open an issue](https://github.com/ruby/rubygems/issues/new?labels=Bundler&template=bundler-related-issue.md) (see [new features documentation](bundler/development/NEW_FEATURES.md))
+- **Report bugs or suggest features**: [Open an issue](https://github.com/ruby/rubygems/issues/new?labels=Bundler&template=bundler-related-issue.md) (see [new features documentation](doc/NEW_FEATURES.md))
 - **Improve documentation**: Contribute to the [Bundler website](https://bundler.io) or [man pages](https://bundler.io/man/bundle.1.html)
 - **Triage issues**: [Check issue completeness](doc/ISSUE_TRIAGE.md) and help close incomplete reports
 - **Write tests**: Add failing tests for [reported bugs](https://github.com/ruby/rubygems/issues) or backfill missing test coverage
 - **Review pull requests**: Provide feedback on [pull requests](https://github.com/ruby/rubygems/pulls)
 - **Improve code**: No patch is too small—fix typos, improve code clarity, or clean up whitespace
-- **Contribute features**: See [adding new features](bundler/development/NEW_FEATURES.md)
+- **Contribute features**: See [adding new features](doc/NEW_FEATURES.md)
 
 ## Pull Request Guidelines
 
-See [bundler/development/PULL_REQUESTS.md](bundler/development/PULL_REQUESTS.md) for detailed guidelines.
+See [doc/PULL_REQUESTS.md](doc/PULL_REQUESTS.md) for detailed guidelines.
 
 ## Community and Support
 
