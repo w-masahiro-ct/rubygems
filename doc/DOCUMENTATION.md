@@ -59,9 +59,7 @@ Additionally, this documentation should be readily available in a logical place 
 
 Someday, we'd like to create deep-dive reference material about the inner workings of Bundler. However, while this is part of our overall vision, it is not the focus of our current work.
 
-# Writing Documentation
-
-## RubyGems Documentation
+## Writing RubyGems Documentation
 
 ### Contributing to RubyGems guides
 
@@ -74,7 +72,7 @@ To contribute to RubyGems documentation:
 
 See the [RubyGems Guides repository](https://github.com/rubygems/guides) for detailed contribution instructions.
 
-## Bundler Documentation
+## Writing Bundler Documentation
 
 ### Writing docs for man pages
 
