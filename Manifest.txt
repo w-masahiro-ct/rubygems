@@ -352,9 +352,8 @@ bundler/lib/bundler/vlad.rb
 bundler/lib/bundler/worker.rb
 bundler/lib/bundler/yaml_serializer.rb
 doc/MAINTAINERS.txt
+doc/POLICIES.md
 doc/UPGRADING.md
-doc/rubygems/CONTRIBUTING.md
-doc/rubygems/POLICIES.md
 exe/gem
 exe/update_rubygems
 hide_lib_for_update/note.txt
