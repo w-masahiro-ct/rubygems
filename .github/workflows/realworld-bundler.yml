@@ -26,14 +26,14 @@ jobs:
 
         ruby:
           - { name: ruby-3.2, value: 3.2.9 }
-          - { name: ruby-3.3, value: 3.3.9 }
-          - { name: ruby-3.4, value: 3.4.5 }
+          - { name: ruby-3.3, value: 3.3.10 }
+          - { name: ruby-3.4, value: 3.4.8 }
           - { name: ruby-4.0, value: 4.0.0 }
 
         include:
           - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-3.2, value: 3.2.9 } }
-          - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-3.3, value: 3.3.9 } }
-          - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-3.4, value: 3.4.5 } }
+          - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-3.3, value: 3.3.10 } }
+          - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-3.4, value: 3.4.8 } }
           - { os: { name: macOS, value: macos-15 }, ruby: { name: ruby-4.0, value: 4.0.0 } }
     env:
       RGV: ..
@@ -68,7 +68,7 @@ jobs:
       - name: Setup ruby
         uses: ruby/setup-ruby@b90be12699fdfcbee4440c2bba85f6f460446bb0 # v1.279.0
         with:
-          ruby-version: 3.4.5
+          ruby-version: 3.4.8
           bundler: none
       - name: Prepare tapioca
         run: ../../../../bin/bundle install
@@ -119,7 +119,7 @@ jobs:
       - name: Setup ruby
         uses: ruby/setup-ruby@b90be12699fdfcbee4440c2bba85f6f460446bb0 # v1.279.0
         with:
-          ruby-version: 3.4.5
+          ruby-version: 3.4.8
           bundler: none
       - name: Prepare dependencies
         run: bin/rake setup
