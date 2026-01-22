@@ -16,18 +16,19 @@ permissions:  # added using https://github.com/step-security/secure-workflows
 
 jobs:
   ruby_core:
-    name: ${{matrix.target}} under a ruby-core setup
+    name: ${{matrix.target}} under a ruby-core / ${{matrix.branch}}
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
         target: [Rubygems, Bundler]
+        branch: [ruby_3_4, ruby_4_0, master]
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           repository: ruby/ruby
           path: ruby/ruby
-          ref: v3_4_5
+          ref: ${{ matrix.branch }}
           persist-credentials: false
       - name: Install libraries
         run: |
