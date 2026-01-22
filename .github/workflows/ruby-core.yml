@@ -48,8 +48,14 @@ jobs:
         working-directory: ruby/ruby
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
-          path: rubygems/rubygems # We need to backport repository url to sync_default_gems.rb of `ruby_3_4` branch.
+          path: rubygems/rubygems
           persist-credentials: false
+        if: matrix.branch == 'ruby_3_4'
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          path: ruby/rubygems
+          persist-credentials: false
+        if: matrix.branch != 'ruby_3_4'
       - name: Sync tools
         run: |
           ruby tool/sync_default_gems.rb rubygems
