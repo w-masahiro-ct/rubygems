@@ -11,7 +11,6 @@ require_relative "basic_specification"
 require_relative "stub_specification"
 require_relative "platform"
 require_relative "specification_record"
-require_relative "util/list"
 
 require "rbconfig"
 
@@ -957,6 +956,15 @@ class Gem::Specification < Gem::BasicSpecification
 
   def self.find_by_path(path)
     specification_record.find_by_path(path)
+  end
+
+  ##
+  # Return the best specification that contains the file matching +path+
+  # amongst the specs that are not loaded. This method is different than
+  # +find_inactive_by_path+ as it will filter out loaded specs by their name.
+
+  def self.find_unloaded_by_path(path)
+    specification_record.find_unloaded_by_path(path)
   end
 
   ##

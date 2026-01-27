@@ -352,10 +352,8 @@ bundler/lib/bundler/vlad.rb
 bundler/lib/bundler/worker.rb
 bundler/lib/bundler/yaml_serializer.rb
 doc/MAINTAINERS.txt
-doc/bundler/UPGRADING.md
-doc/rubygems/CONTRIBUTING.md
-doc/rubygems/POLICIES.md
-doc/rubygems/UPGRADING.md
+doc/POLICIES.md
+doc/UPGRADING.md
 exe/gem
 exe/update_rubygems
 hide_lib_for_update/note.txt
@@ -529,8 +527,8 @@ lib/rubygems/uri.rb
 lib/rubygems/uri_formatter.rb
 lib/rubygems/user_interaction.rb
 lib/rubygems/util.rb
+lib/rubygems/util/atomic_file_writer.rb
 lib/rubygems/util/licenses.rb
-lib/rubygems/util/list.rb
 lib/rubygems/validator.rb
 lib/rubygems/vendor/.document
 lib/rubygems/vendor/molinillo/LICENSE

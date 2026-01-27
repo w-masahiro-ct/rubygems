@@ -65,7 +65,7 @@ To upgrade to the latest RubyGems, run:
 
     $ gem update --system
 
-See [UPGRADING](doc/rubygems/UPGRADING.md) for more details and alternative instructions.
+See [UPGRADING](doc/UPGRADING.md) for more details and alternative instructions.
 
 ## Release policy
 

@@ -93,10 +93,9 @@ RDoc::Task.new rdoc: "docs", clobber_rdoc: "clobber_docs" do |doc|
   doc.title  = "RubyGems #{v} API Documentation"
 
   rdoc_files = Rake::FileList.new %w[lib bundler/lib]
-  rdoc_files.add %w[CHANGELOG.md LICENSE.txt MIT.txt CODE_OF_CONDUCT.md doc/rubygems/CONTRIBUTING.md
-                    doc/MAINTAINERS.txt Manifest.txt doc/rubygems/POLICIES.md README.md doc/rubygems/UPGRADING.md bundler/CHANGELOG.md
-                    doc/bundler/contributing/README.md bundler/LICENSE.md bundler/README.md
-                    hide_lib_for_update/note.txt].map(&:freeze)
+  rdoc_files.add %w[CHANGELOG.md LICENSE.txt MIT.txt CODE_OF_CONDUCT.md CONTRIBUTING.md
+                    doc/MAINTAINERS.txt Manifest.txt doc/POLICIES.md README.md doc/UPGRADING.md bundler/CHANGELOG.md
+                    bundler/LICENSE.md bundler/README.md hide_lib_for_update/note.txt].map(&:freeze)
 
   doc.rdoc_files = rdoc_files
 
@@ -181,11 +180,17 @@ task :generate_changelog, [:version] => [:install_release_dependencies] do |_t, 
   require_relative "tool/release"
 
   Release.for_rubygems(opts[:version]).cut_changelog!
+  Rake::Task["bundler:generate_changelog"].invoke(opts[:version])
 end
 
 desc "Release rubygems-#{v}"
 task release: :prerelease do
   Rake::Task["package"].invoke
+  puts "Tagging v#{v}"
+  sh "git", "tag", "v#{v}", noop: ENV["DRYRUN"]
+  puts "Pushing v#{v} to origin"
+  sh "git", "push", "origin", "v#{v}", noop: ENV["DRYRUN"]
+  puts "Pushing rubygems-update-#{v} to RubyGems.org"
   sh "gem", "push", "pkg/rubygems-update-#{v}.gem", noop: ENV["DRYRUN"]
   Rake::Task["postrelease"].invoke
 end
@@ -248,10 +253,16 @@ desc "Upload release to S3"
 task :upload_to_s3 do
   require "aws-sdk-s3"
 
-  s3 = Aws::S3::Resource.new(region:"us-west-2")
+  client = Aws::S3::Client.new(region: "us-west-2")
+  transfer_manager = Aws::S3::TransferManager.new(client: client)
+
   %w[zip tgz].each do |ext|
-    obj = s3.bucket("oregon.production.s3.rubygems.org").object("rubygems/rubygems-#{v}.#{ext}")
-    obj.upload_file("pkg/rubygems-#{v}.#{ext}", acl: "public-read")
+    transfer_manager.upload_file(
+      "pkg/rubygems-#{v}.#{ext}",
+      bucket: "oregon.production.s3.rubygems.org",
+      key: "rubygems/rubygems-#{v}.#{ext}",
+      acl: "public-read"
+    )
   end
 end
 
@@ -397,6 +408,7 @@ To update to the latest RubyGems you can run:
 To update to the latest Bundler you can run:
 
     gem install bundler [--pre]
+    bundle update --bundler=#{v}
 
 ## RubyGems Release Notes
 
@@ -471,10 +483,8 @@ module Rubygems
       # Restore important documents
       %w[
         doc/MAINTAINERS.txt
-        doc/bundler/UPGRADING.md
-        doc/rubygems/CONTRIBUTING.md
-        doc/rubygems/POLICIES.md
-        doc/rubygems/UPGRADING.md
+        doc/UPGRADING.md
+        doc/POLICIES.md
       ].each {|f| files << f }
 
       files.sort
@@ -700,6 +710,8 @@ namespace :bundler do
     Rake::Task["bundler:build_metadata:clean"].tap(&:reenable).invoke
   end
 
+  task "build" => ["bundler:release:check_ruby_version"]
+
   desc "Push to rubygems.org"
   task "release:rubygem_push" => ["bundler:release:setup", "man:check", "bundler:build_metadata", "check_release_preparations", "bundler:release:github"]
 
@@ -719,6 +731,10 @@ namespace :bundler do
       gemspec_version = Bundler::GemHelper.gemspec.version
 
       Release.for_bundler(gemspec_version).create_for_github!
+    end
+
+    task :check_ruby_version do
+      raise "bundler:build need to released Ruby for using nokogiri" if RUBY_PATCHLEVEL.to_i < 0
     end
   end
 end

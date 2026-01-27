@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+version = File.read(File.join(__dir__, "lib", "rubygems.rb"))[/^\s*VERSION\s*=\s*"(.*)"/, 1]
+
 Gem::Specification.new do |s|
   s.name = "rubygems-update"
-  s.version = "4.0.0.beta1"
+  s.version = version
   s.authors = ["Jim Weirich", "Chad Fowler", "Eric Hodel", "Luis Lavena", "Aaron Patterson", "Samuel Giddins", "André Arko", "Evan Phoenix", "Hiroshi SHIBATA"]
   s.email = ["", "", "drbrain@segment7.net", "luislavena@gmail.com", "aaron@tenderlovemaking.com", "segiddins@segiddins.me", "andre@arko.net", "evan@phx.io", "hsbt@ruby-lang.org"]
 
@@ -30,9 +32,8 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = [
     "LICENSE.txt", "doc/MAINTAINERS.txt",
     "MIT.txt", "Manifest.txt", "README.md",
-    "doc/rubygems/UPGRADING.md", "doc/rubygems/POLICIES.md", "CODE_OF_CONDUCT.md",
-    "doc/rubygems/CONTRIBUTING.md",
-    "bundler/LICENSE.md", "bundler/README.md",
+    "doc/UPGRADING.md", "doc/POLICIES.md", "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md", "bundler/LICENSE.md", "bundler/README.md",
     "hide_lib_for_update/note.txt", *Dir["bundler/lib/bundler/man/*.1", base: __dir__]
   ]
 
